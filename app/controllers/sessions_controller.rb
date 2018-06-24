@@ -2,7 +2,6 @@ class SessionsController < ApplicationController
 
   def new 
     @user = User.new
-    @users = User.all
 
   end
 
@@ -16,6 +15,10 @@ class SessionsController < ApplicationController
     end
   end
 
+  def destroy 
+    session[:user_id].clear
+    redirect_to root_url
+  end
   
 
 end
