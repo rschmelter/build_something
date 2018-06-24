@@ -3,6 +3,10 @@ Rails.application.routes.draw do
 
   root "static_pages#home"
 
+  get "/signin", to: "sessions#new" 
+  post "/sessions/create", to: "session#create"
+  delete "/signout", to: "session#destory"
+
   resources :users
   
   resources :users, only: [:show] do 
