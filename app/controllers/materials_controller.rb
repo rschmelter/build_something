@@ -1,0 +1,7 @@
+class MaterialsController < ApplicationController 
+
+
+
+
+
+end
