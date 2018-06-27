@@ -1,0 +1,26 @@
+<%=form_for(@project) do |f|%> 
+  <%=f.hidden_field :user_id%> 
+
+  <%=f.label :name%>
+  <%=f.text_field :name%> <br>
+  <br>
+
+  <%=f.label :type%>
+  <%=f.text_field :type%> <br>
+  <br>
+
+  <%=f.label :cost%>
+  <%=f.number_field :cost%> <br>
+  <br>
+
+  <%=f.label :difficulty%>
+  <%=f.number_field :difficulty%> <br>
+  <br>
+
+  <%=f.submit%>
+
+
+
+<%end%>
+
+
