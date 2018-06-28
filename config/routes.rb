@@ -7,17 +7,11 @@ Rails.application.routes.draw do
   post "/sessions/create", to: "sessions#create"
   get "/signout", to: "sessions#destroy"
 
-  resources :users
-  
-  resources :users, only: [:show] do 
-    resources :projects
+  resources :users do 
+    resources :projects, only: [:show, :index, :new]
   end
 
-  resources :users, only: [:show] do
-    resources :materials
-  end
-
-  resources :projects, only: [:index, :show]
+  resources :projects, only: [:index, :show, :new, :create]
 
 
 

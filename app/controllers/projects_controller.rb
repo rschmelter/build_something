@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController 
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   
   def index 
@@ -18,19 +18,24 @@ class ProjectsController < ApplicationController
   end
 
   def create 
-    @project = Project.create(project_params)
+    @project = Project.new(project_params)
+    if @project.save
+      redirect_to user_project_path(params[:project][:user_id], @project.id)
+    else 
+      render :new
+    end
 
   end
 
   private 
 
   def set_project 
-    @project = project.find(params[:id])
+    @project = Project.find(params[:id])
 
   end
 
   def project_params 
-    params.require(:project).permit(:name, :cost, :difficulty, :type, :user_id)
+    params.require(:project).permit(:name, :cost, :difficulty, :project_type, :user_id)
 
   end
 
