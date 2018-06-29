@@ -1,15 +1,17 @@
+<h1>Create Your New Project</h1>
+
 <%=form_for(@project) do |f|%> 
   <%=f.hidden_field :user_id%> 
 
-  <%=f.label :name%>
+  <%=f.label "Project Name:"%>
   <%=f.text_field :name%> <br>
   <br>
 
-  <%=f.label :project_type%>
+  <%=f.label "What Type of project is this?"%>
   <%=f.text_field :project_type%> <br>
   <br>
 
-  <%=f.label "Cost in dollars"%>
+  <%=f.label "How much does it cost? $"%>
   <%=f.number_field :cost%> <br>
   <br>
 
@@ -17,11 +19,13 @@
   <%=f.number_field :difficulty%> <br>
   <br>
 
+  <h2>Enter the the the type of materials needed for this project along with sizes and quantities.</h2>
+
   <%=f.fields_for :project_materials, @materials do |project_materials|%>
   <p>Quantity: <%=project_materials.number_field :quantity%></p>
   <p>Size: <%=project_materials.text_field :size%></p>
 
-  <%=f.collection_check_boxes :material_ids, Material.all, :id, :name%>
+  <%=project_materials.collection_check_boxes :material_id, Material.all, :id, :name%>
   <br>
   <%=f.fields_for :materials, @project.materials.build do |materials_fields|%>
     <%=f.label "Type of material"%>
@@ -29,6 +33,7 @@
     <br>
     <%=f.label "Check if this material is a tool"%>
     <%=materials_fields.check_box :tool%>
+<%end%>
 <%end%>
 <br>
 
