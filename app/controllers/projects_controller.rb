@@ -8,6 +8,7 @@ class ProjectsController < ApplicationController
   
   def new 
     @project = Project.new(user_id: params[:user_id])
+    @materials = 6.times.collect {@project.project_materials.build}
   end 
 
   def show 

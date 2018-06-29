@@ -3,5 +3,5 @@ class Project < ActiveRecord::Base
   has_many :project_materials
   has_many :materials, :through => :project_materials
 
-
+  accepts_nested_attributes_for :project_materials
 end
