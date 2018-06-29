@@ -11,12 +11,8 @@ Rails.application.routes.draw do
     resources :projects, only: [:show, :index, :new]
   end
 
-  resources :projects, only: [:index, :show, :new, :create]
-
-
-
-
-  
+  resources :projects, only: [:index, :show, :create]
+  resources :materials
 
 
 end

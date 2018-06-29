@@ -9,13 +9,25 @@
   <%=f.text_field :project_type%> <br>
   <br>
 
-  <%=f.label :cost%>
+  <%=f.label "Cost in dollars"%>
   <%=f.number_field :cost%> <br>
   <br>
 
-  <%=f.label :difficulty%>
+  <%=f.label "Rate difficulty from 1 - 5"%>
   <%=f.number_field :difficulty%> <br>
   <br>
+
+  <%=f.collection_check_boxes :material_ids, Material.all, :id, :name%>
+  <br>
+  <%=f.fields_for :materials, @project.materials.build do |materials_fields|%>
+    <%=f.label "Type of material"%>
+    <%=materials_fields.text_field :name%>
+    <br>
+    <%=f.label "Check if this material is a tool"%>
+    <%=materials_fields.check_box :tool%>
+<%end%>
+<br>
+
 
   <%=f.submit%>
 
