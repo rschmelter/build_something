@@ -24,15 +24,19 @@
   <%=f.fields_for :project_materials, @materials do |project_materials|%>
   <p>Quantity: <%=project_materials.number_field :quantity%></p>
   <p>Size: <%=project_materials.text_field :size%></p>
+  <h3>Select a Material from the dropdown:</h3>
 
-  <%=project_materials.collection_check_boxes :material_id, Material.all, :id, :name%>
+  <%=project_materials.collection_select :material_id, Material.order('name ASC').all, :id, :name, include_blank: "Select Material"%>
   <br>
+  
+  <h3>Or create a new material:</h3>
   <%=f.fields_for :materials, @project.materials.build do |materials_fields|%>
     <%=f.label "Type of material"%>
     <%=materials_fields.text_field :name%>
     <br>
     <%=f.label "Check if this material is a tool"%>
     <%=materials_fields.check_box :tool%>
+    <p>_______________________________________</p>
 <%end%>
 <%end%>
 <br>

@@ -8,7 +8,7 @@ class ProjectsController < ApplicationController
   
   def new 
     @project = Project.new(user_id: params[:user_id])
-    @materials = 6.times.collect {@project.project_materials.build}
+    @materials = 15.times.collect {@project.project_materials.build}
   end 
 
   def show 
@@ -17,12 +17,13 @@ class ProjectsController < ApplicationController
   end
 
   def create 
-    @project = Project.new(project_params)
-    if @project.save
-      redirect_to user_project_path(params[:project][:user_id], @project.id)
-    else 
-      render :new
-    end
+   
+    project = current_user.projects.new(project_params)
+      if project.save 
+        binding.pry
+        project.add_materials(project_materials_params)
+    
+      end
 
   end
 
@@ -38,6 +39,9 @@ class ProjectsController < ApplicationController
 
   end
 
+  def project_materials_params
+    params.require(:project).permit(project_materials_attributes: [:quantity, :size, :material_id)
+  end
 
 
 
