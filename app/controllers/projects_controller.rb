@@ -18,6 +18,14 @@ class ProjectsController < ApplicationController
 
   def create 
     binding.pry
+    project = current_user.projects.new(project_params)
+    if Project
+      project.add_materials(project_materials_params)
+      redirect_to project_path(project)
+    else 
+      @project = Project.new
+      redirect_to new_project_path
+    end
 
   end
 
