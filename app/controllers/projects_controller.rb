@@ -17,6 +17,7 @@ class ProjectsController < ApplicationController
   end
 
   def create 
+ 
     
     project = current_user.projects.new(project_params)
     if project.save
@@ -42,7 +43,7 @@ class ProjectsController < ApplicationController
   end
 
   def project_materials_params
-    params.require(:project).permit(project_materials_attributes: [:quantity, :material_id, material:[:material_name, :tool]])
+    params.require(:project).permit(project_materials_attributes: [:quantity, :size, :material_id, material:[:material_name, :tool]])
   end
 
 

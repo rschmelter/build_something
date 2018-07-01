@@ -19,7 +19,8 @@ class Project < ActiveRecord::Base
       end 
 
       if v[:quantity].present? && v[:size].present?
-        ProjectMaterial.create(quantity: v[:quantity], size: v[:size], material_id: material.id, project_id: self.id)
+        project_material = ProjectMaterial.create(quantity: v[:quantity], size: v[:size], material_id: material.id, project_id: self.id)
+     
       end
     end
   end
