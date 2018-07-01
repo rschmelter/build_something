@@ -1,1 +1,8 @@
 <h1>Hi <%=@project.user.name%>'s <%=@project.name%> project</h1>
+
+
+<ul>
+  <%@project.materials.each do |material|%>
+    <li><%=material.material_name%></li> 
+    <%end%>
+</ul>
