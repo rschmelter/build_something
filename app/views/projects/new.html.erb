@@ -21,9 +21,9 @@
 
   <h2>Add Materials:</h2>
 
-  <%=fields_for :project_materials, @materials do |project_material|%> 
+  <%=f.fields_for :project_materials, @materials do |project_material|%> 
   <p>Quantity <%=project_material.number_field :quantity%></p>
-  <p><%=project_material.text_field :size%></p>
+  <p>Size <%=project_material.text_field :size%></p>
 
   <h2>Select Material</h2>
   <%=project_material.collection_select :material_id, Material.all, :id, :name, include_blank: "Select Material"%>
