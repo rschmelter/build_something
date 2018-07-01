@@ -8,8 +8,18 @@ class Project < ActiveRecord::Base
 
 
 
-  def add_materials 
-    # params[:project][project_materials].values. each do |project_material|
+  def add_materials(params)
+    params[:project_materials_attributes].values.each do |v|
+      if v[:material][:material_name].present?
+        material_name = v[:material][:material_name].downcase
+        material = Material.find_or_create_by(material_name: material_name)
+        material.update(tool: v[:material][:tool])
+      elsif v[:material_id].present?
+        material = Material.find_by(id: v[:material_id])
+      end 
+        
+
+    
 
 
 

@@ -26,10 +26,10 @@
   <p>Size <%=project_material.text_field :size%></p>
 
   <h2>Select Material</h2>
-  <%=project_material.collection_select :material_id, Material.all, :id, :name, include_blank: "Select Material"%>
+  <%=project_material.collection_select :material_id, Material.all, :id, :material_name, include_blank: "Select Material"%>
   <%=project_material.fields_for :material, @project.materials.build do |material|%>
   <h2>Or Create a New Material:</h2>
-  <%=material.text_field :name%>
+  <%=material.text_field :material_name%>
   <%=material.check_box :tool%> 
 <%end%>
 <%end%> 

@@ -42,7 +42,7 @@ class ProjectsController < ApplicationController
   end
 
   def project_materials_params
-    params.require(:project).permit(project_materials_attributes: [:quantity, :material_id, material:[:name], material:[:tool]])
+    params.require(:project).permit(project_materials_attributes: [:quantity, :material_id, material:[:material_name, :tool]])
   end
 
 
