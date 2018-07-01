@@ -17,12 +17,10 @@ class Project < ActiveRecord::Base
       elsif v[:material_id].present?
         material = Material.find_by(id: v[:material_id])
       end 
-        
 
-    
-
-
-
+      if v[:quantity].present? && v[:size].present?
+        ProjectMaterial.create(quantity: v[:quantity], size: v[:size], material_id: material.id, project_id: self.id)
+      end
   end
 
 end
