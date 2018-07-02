@@ -1,9 +1,12 @@
 <h1><%=@project.user.name%>'s <%=@project.name%> Project</h1>
+<h3>Difficulty: <%=@project.difficulty%>/5</h3>
+<h3>Cost: $<%=@project.cost%></h3>
 
-
+<h3>Materials Required</h3>
 <ul>
   <%@project.project_materials.each do |pm|%>
       <li>Material: <%=pm.material.material_name%> | Quantity: <%=pm.quantity%> | Size: <%=pm.size%></li>
     <%end%>
 </ul>
 
+<p><%=@project.instructions%></p>
