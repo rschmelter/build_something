@@ -19,6 +19,10 @@
   <%=f.number_field :difficulty%> <br>
   <br>
 
+  <%=f.label "Instructions"%>
+  <%=f.text_area :instructions%>
+  <br>
+
   <h2>Add Materials:</h2>
 
   <%=f.fields_for :project_materials, @materials do |project_material|%> 
@@ -29,8 +33,10 @@
   <%=project_material.collection_select :material_id, Material.all, :id, :material_name, include_blank: "Select Material"%>
   <%=project_material.fields_for :material, @project.materials.build do |material|%>
   <h2>Or Create a New Material:</h2>
-  <%=material.text_field :material_name%>
-  <%=material.check_box :tool%> 
+  <p>Type of Material:<%=material.text_field :material_name%></p>
+  <p>Check if this is a tool:<%=material.check_box :tool%> </p>
+  <p>_________________________________________________________________</p>
+  <br>
 <%end%>
 <%end%> 
 
