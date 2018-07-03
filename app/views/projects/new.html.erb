@@ -1,46 +1,6 @@
 <h1>Create Your New Project</h1>
 
-<%=form_for(@project) do |f|%> 
-  <%=f.hidden_field :user_id%> 
+  <%=render 'form'%>
 
-  <%=f.label "Project Name:"%>
-  <%=f.text_field :name%> <br>
-  <br>
 
-  <%=f.label "What Type of project is this?"%>
-  <%=f.text_field :project_type%> <br>
-  <br>
-
-  <%=f.label "How much does it cost? $"%>
-  <%=f.number_field :cost%> <br>
-  <br>
-
-  <%=f.label "Rate difficulty from 1 - 5"%>
-  <%=f.number_field :difficulty%> <br>
-  <br>
-
-  <%=f.label "Instructions"%>
-  <%=f.text_area :instructions%>
-  <br>
-
-  <h2>Add Materials:</h2>
-
-  <%=f.fields_for :project_materials, @materials do |project_material|%> 
-  <p>Quantity <%=project_material.number_field :quantity%></p>
-  <p>Size <%=project_material.text_field :size%></p>
-
-  <h2>Select Material</h2>
-  <%=project_material.collection_select :material_id, Material.all, :id, :material_name, include_blank: "Select Material"%>
-  <%=project_material.fields_for :material, @project.materials.build do |material|%>
-  <h2>Or Create a New Material:</h2>
-  <p>Type of Material:<%=material.text_field :material_name%></p>
-  <p>Check if this is a tool:<%=material.check_box :tool%> </p>
-  <p>_________________________________________________________________</p>
-  <br>
-<%end%>
-<%end%> 
-
-<%=f.submit%> 
-
-<%end%>
 

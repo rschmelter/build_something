@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController 
-  before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :set_project, only: [:show, :update, :edit, :destroy]
 
   
   def index 
@@ -16,9 +16,7 @@ class ProjectsController < ApplicationController
 
   end
 
-  def create 
- 
-    
+  def create     
     project = current_user.projects.new(project_params)
     if project.save
       project.add_materials(project_materials_params)
@@ -27,6 +25,10 @@ class ProjectsController < ApplicationController
       @project = Project.new
       redirect_to new_project_path
     end
+  end
+
+  def edit 
+    @materials = 10.times{@project.project_materials.build}
 
   end
 

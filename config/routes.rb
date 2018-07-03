@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get "/signout", to: "sessions#destroy"
 
   resources :users do 
-    resources :projects, only: [:show, :index, :new]
+    resources :projects, only: [:show, :index, :new, :edit]
   end
 
   resources :projects, only: [:index, :show, :create]

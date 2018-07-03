@@ -4,5 +4,4 @@
 <%if current_user.id == @user.id%>
 <p><%=link_to "Create a New Project", new_user_project_path(@user)%> </p>
 
-<p><%=link_to "Signout", signout_path%> </p>
 <%end%>
