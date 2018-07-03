@@ -8,7 +8,12 @@ class Project < ActiveRecord::Base
 
 
 
+  def clear_materials
+    self.materials.delete_all
+  end
+
   def add_materials(params)
+    clear_materials
     params[:project_materials_attributes].values.each do |v|
       if v[:material][:material_name].present?
         material_name = v[:material][:material_name].downcase
