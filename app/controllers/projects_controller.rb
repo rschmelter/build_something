@@ -32,6 +32,15 @@ class ProjectsController < ApplicationController
 
   end
 
+  def update 
+    if @project.update(project_params)
+      @project.add_materials(project_materials_params)
+      redirect_to user_project_path(current_user.id, @project.id)
+    else 
+      redirect_to new_project_path
+    end
+  end
+
   private 
 
   def set_project 
