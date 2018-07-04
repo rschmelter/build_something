@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController 
   before_action :set_project, only: [:show, :update, :edit, :destroy]
-
+  
   
   def index 
 
@@ -38,7 +38,8 @@ class ProjectsController < ApplicationController
       @project.add_materials(project_materials_params)
       redirect_to user_project_path(current_user.id, @project.id)
     else 
-      redirect_to new_project_path(current_user.id)
+      @materials = 10.times {@project.project_materials.build}
+      render :new
     end
   end
 
@@ -46,7 +47,6 @@ class ProjectsController < ApplicationController
 
   def set_project 
     @project = Project.find(params[:id])
-
   end
 
   def project_params 
