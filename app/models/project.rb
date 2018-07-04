@@ -3,6 +3,12 @@ class Project < ActiveRecord::Base
   has_many :project_materials
   has_many :materials, :through => :project_materials
 
+  validates :name, presence: true
+  validates :project_type, presence: true
+  validates :cost, presence: true
+  validates :difficulty, presence: true
+  validates :instructions, presence: true
+
   accepts_nested_attributes_for :materials
   accepts_nested_attributes_for :project_materials
 

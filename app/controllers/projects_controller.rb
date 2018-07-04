@@ -9,6 +9,7 @@ class ProjectsController < ApplicationController
   def new 
     @project = Project.new(user_id: params[:user_id])
     @materials = 10.times {@project.project_materials.build}
+
   end 
 
   def show 
@@ -17,13 +18,12 @@ class ProjectsController < ApplicationController
   end
 
   def create     
-    project = current_user.projects.new(project_params)
-    if project.save
-      project.add_materials(project_materials_params)
-      redirect_to user_project_path(current_user.id, project.id)
+    @project = current_user.projects.new(project_params)
+    if @project.save
+      @project.add_materials(project_materials_params)
+      redirect_to user_project_path(current_user.id, @project.id)
     else 
-      @project = Project.new
-      redirect_to new_project_path
+      render @projects/new
     end
   end
 
@@ -37,7 +37,7 @@ class ProjectsController < ApplicationController
       @project.add_materials(project_materials_params)
       redirect_to user_project_path(current_user.id, @project.id)
     else 
-      redirect_to new_project_path
+      redirect_to new_project_path(current_user.id)
     end
   end
 
