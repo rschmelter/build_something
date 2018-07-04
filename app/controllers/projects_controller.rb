@@ -23,7 +23,8 @@ class ProjectsController < ApplicationController
       @project.add_materials(project_materials_params)
       redirect_to user_project_path(current_user.id, @project.id)
     else 
-      render @projects/new
+      @materials = 10.times {@project.project_materials.build}
+      render :new
     end
   end
 
