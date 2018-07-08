@@ -6,13 +6,14 @@ Rails.application.routes.draw do
   get "/signin", to: "sessions#new" 
   post "/sessions/create", to: "sessions#create"
   get "/signout", to: "sessions#destroy"
-  get '/auth/facebook/callback', to 'sessions#create'
+  get '/auth/facebook/callback', to: 'sessions#create'
+
 
   resources :users do 
     resources :projects
   end
 
-  resources :projects, only: [:index, :create, :update]
+  resources :projects, only: [:index, :show, :create, :update]
   resources :materials
 
 
