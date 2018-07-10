@@ -5,8 +5,14 @@ class UsersController < ApplicationController
     @users = User.all
 
   end
-  def show 
-    
+
+  def show     
+
+  end
+
+  def projects
+    user = User.find(params[:id])
+    @projects = user.projects
 
   end
 

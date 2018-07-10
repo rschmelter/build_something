@@ -10,8 +10,10 @@ Rails.application.routes.draw do
 
 
   resources :users do 
-    resources :projects
+    resources :projects, except: [:index]
   end
+
+  get "/users/:id/projects", to: "users#projects"
 
   resources :projects, only: [:index, :show, :create, :update]
   resources :materials
