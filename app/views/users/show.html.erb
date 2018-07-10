@@ -4,4 +4,6 @@
 <%if current_user.id == @user.id%>
 <p><%=link_to "Create a New Project", new_user_project_path(@user)%> </p>
 
+<%= link_to "Delete Your Account", current_user, method: :delete, data: {confirm: "Are You Sure You Want to Delete Your Account? All of Your Projects Will Be Lost."} %>
+
 <%end%>

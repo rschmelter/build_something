@@ -1,6 +1,7 @@
 
 <%= form_for @user, :url => url_for(:controller => 'sessions', :action => 'create') do |f| %>
 
+
   <%=f.label :name %>
   <br>
   <%=f.text_field :name%>

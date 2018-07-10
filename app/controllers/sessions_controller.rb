@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
       end
     end
     
-    if params[:user][:name].present?
+    if params[:user].present?
       @user = User.find_by(name: params[:user][:name])
       if @user && @user.authenticate(params[:user][:password])
         session[:user_id] = @user.id
