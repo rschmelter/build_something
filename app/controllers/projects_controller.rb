@@ -31,7 +31,17 @@ class ProjectsController < ApplicationController
   end
 
   def edit 
-    @materials = 10.times{@project.project_materials.build}
+    if params[:user_id]
+      user = User.find_by(id: params[:user_id])
+      if user.nil?
+        redirect_to users_path(current_user)
+      else 
+        @project = user.projects.find_by(id: params[:id])
+        redirect_to user_path(current_user) if @project.nil?
+      end
+    else
+      @materials = 10.times{@project.project_materials.build}
+    end
 
   end
 
