@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
 
   def create 
     if request.env["omniauth.auth"].present?
-      @user = User.find_or_create_by(name: request.env["omniauth.auth"]["info"]["name"])
+      @user = User.find_or_create_by(name: request.env["omniauth.auth"]["info"]["nickname"])
       if @user.id.present?
         session[:user_id] = @user.id
         redirect_to user_path(@user)
