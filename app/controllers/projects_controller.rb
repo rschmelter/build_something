@@ -34,7 +34,7 @@ class ProjectsController < ApplicationController
     if params[:user_id]
       user = User.find_by(id: params[:user_id])
       if user.nil?
-        redirect_to users_path(current_user)
+        redirect_to user_path(current_user), alert: "User not found."
       else 
         @project = user.projects.find_by(id: params[:id])
         redirect_to user_path(current_user) if @project.nil?
