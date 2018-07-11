@@ -33,7 +33,7 @@ class UsersController < ApplicationController
 
   def destroy 
     session.clear
-    User.find(params[:id]).destroy
+    @user.destroy
     redirect_to root_path
 
 
