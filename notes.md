@@ -23,3 +23,7 @@ Test
 Test
 
 Test
+
+Need abstract code from show and update to helper
+need to figure out validation for project detroy
+need to figure out what happens with set_project method

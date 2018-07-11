@@ -1,25 +1,31 @@
 class ProjectsController < ApplicationController 
-  before_action :set_project, only: [:show, :update, :edit, :destroy]
+  # before_action :set_project, only: [:show, :update, :edit, :destroy]
   
   
   def index 
     @projects = Project.all
   end 
   
-  def new 
- 
+  def new  
     @user = current_user
     @project = @user.projects.build
     @materials = 10.times {@project.project_materials.build}
-
   end 
 
-  def show   
+  def show
+    if params[:user_id]
+      user = User.find_by(id: params[:user_id])
+      if user.nil?
+        redirect_to user_path(current_user), alert: "User not found."
+      else 
+        @project = user.projects.find_by(id: params[:id])
+        redirect_to user_path(current_user) if @project.nil?
+      end
+    end
 
   end
 
-  def create     
-  
+  def create       
     @project = current_user.projects.new(project_params)
     if @project.save
       @project.add_materials(project_materials_params)
@@ -56,9 +62,8 @@ class ProjectsController < ApplicationController
   end
 
   def destroy 
-    
-
-
+    @project.destroy
+    redirect_to user_path(current_user)
   end
 
   private 
