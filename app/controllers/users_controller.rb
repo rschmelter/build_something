@@ -11,7 +11,6 @@ class UsersController < ApplicationController
   end
 
   def projects    
-
     
   end
 
@@ -34,8 +33,6 @@ class UsersController < ApplicationController
     session.clear
     @user.destroy
     redirect_to root_path
-
-
   end
 
   private 

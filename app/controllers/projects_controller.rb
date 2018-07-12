@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController 
   
-  before_action :validate_user_project, only: [:show, :edit, :create, :update, :destroy]
-  before_action :set_project, only: [:show, :edit, :create, :update, :destroy]
+  before_action :validate_user_project, only: [:show, :edit, :destroy]
+  before_action :set_project, only: [:show, :edit, :new, :create, :update, :destroy]
   
   def index 
     @projects = Project.all
