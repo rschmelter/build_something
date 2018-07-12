@@ -1,5 +1,5 @@
 class UsersController < ApplicationController 
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :projects, :edit, :update, :destroy]
   
   def index 
     @users = User.all
@@ -11,13 +11,7 @@ class UsersController < ApplicationController
   end
 
   def projects    
-      user = User.find_by(id: params[:id])
-      if user.nil?
-        redirect_to user_path(current_user)
-      else
-      user = User.find(params[:id])
-        @projects = user.projects     
-      end
+
     
   end
 
@@ -47,7 +41,12 @@ class UsersController < ApplicationController
   private 
 
   def set_user
-    @user = User.find(params[:id])
+    @user = User.find_by(id: params[:id])
+    if @user.nil?
+      redirect_to user_path(current_user)
+    else
+      @projects = @user.projects     
+    end
   end
 
   def user_params 
