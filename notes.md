@@ -24,6 +24,5 @@ Test
 
 Test
 
-Need abstract code from show and update to helper
-need to figure out validation for project detroy
-need to figure out what happens with set_project method
+
+need to figure out what happens with set_project method, projects are showing up even though the wrong user is in the url. 

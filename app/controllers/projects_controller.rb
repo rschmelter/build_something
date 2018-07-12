@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController 
-  before_action :validate_user, only: [:new, :edit, :create, :update, :destroy]
-  before_action :set_user_project, only: [:show, :index]
+  
+  before_action :validate_user_project, only: [:edit, :create, :update, :destroy]
+  before_action :set_project, only: [:show, :edit, :create, :update, :destroy]
   
   def index 
     @projects = Project.all
@@ -13,7 +14,7 @@ class ProjectsController < ApplicationController
   end 
 
   def show
-    @project = Project.find(params[:id])
+    
 
   end
 
@@ -50,23 +51,26 @@ class ProjectsController < ApplicationController
 
   private 
 
-  def validate_user 
-    user = User.find_by(id: params[:user_id])
-    if user.nil? || user.id != current_user.id
-      redirect_to user_path(current_user)
-    end
-  end
-
-  def set_user_project 
+  def validate_user_project 
     if params[:user_id]
       user = User.find_by(id: params[:user_id])
-      if user.nil?
-        redirect_to user_path(current_user), alert: "User not found."
-      else 
+      if user.nil? 
+        redirect_to user_path(current_user)
+      else
         @project = user.projects.find_by(id: params[:id])
-        redirect_to user_path(current_user) if @project.nil?
-      end
+      end 
+    end 
+    if @project.nil? || @project.user != current_user
+      redirect_to user_path(current_user)
     end
+
+  end 
+      
+
+
+  def set_project 
+    @project = Project.find(params[:id])
+
   end
 
   def project_params 
