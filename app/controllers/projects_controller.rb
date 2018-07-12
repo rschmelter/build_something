@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController 
-  # before_action :set_project, only: [:show, :update, :edit, :destroy]
-  
+  before_action :validate_user, only: [:new, :edit, :create, :update, :destroy]
+  before_action :set_user_project, only: [:show, :index]
   
   def index 
     @projects = Project.all
@@ -13,15 +13,7 @@ class ProjectsController < ApplicationController
   end 
 
   def show
-    if params[:user_id]
-      user = User.find_by(id: params[:user_id])
-      if user.nil?
-        redirect_to user_path(current_user), alert: "User not found."
-      else 
-        @project = user.projects.find_by(id: params[:id])
-        redirect_to user_path(current_user) if @project.nil?
-      end
-    end
+    @project = Project.find(params[:id])
 
   end
 
@@ -37,17 +29,7 @@ class ProjectsController < ApplicationController
   end
 
   def edit 
-    if params[:user_id]
-      user = User.find_by(id: params[:user_id])
-      if user.nil?
-        redirect_to user_path(current_user), alert: "User not found."
-      else 
-        @project = user.projects.find_by(id: params[:id])
-        redirect_to user_path(current_user) if @project.nil?
-      end
-    else
-      @materials = 10.times{@project.project_materials.build}
-    end
+      @materials = 10.times{@project.project_materials.build}   
 
   end
 
@@ -68,8 +50,23 @@ class ProjectsController < ApplicationController
 
   private 
 
-  def set_project 
-    @project = Project.find(params[:id])
+  def validate_user 
+    user = User.find_by(id: params[:user_id])
+    if user.nil? || user.id != current_user.id
+      redirect_to user_path(current_user)
+    end
+  end
+
+  def set_user_project 
+    if params[:user_id]
+      user = User.find_by(id: params[:user_id])
+      if user.nil?
+        redirect_to user_path(current_user), alert: "User not found."
+      else 
+        @project = user.projects.find_by(id: params[:id])
+        redirect_to user_path(current_user) if @project.nil?
+      end
+    end
   end
 
   def project_params 
