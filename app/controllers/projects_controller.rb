@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController 
   
-  before_action :validate_user_project, only: [:edit, :create, :update, :destroy]
+  before_action :validate_user_project, only: [:show, :edit, :create, :update, :destroy]
   before_action :set_project, only: [:show, :edit, :create, :update, :destroy]
   
   def index 
@@ -13,8 +13,7 @@ class ProjectsController < ApplicationController
     @materials = 10.times {@project.project_materials.build}
   end 
 
-  def show
-    
+  def show    
 
   end
 
@@ -63,14 +62,11 @@ class ProjectsController < ApplicationController
     if @project.nil? || @project.user != current_user
       redirect_to user_path(current_user)
     end
-
-  end 
-      
+  end    
 
 
   def set_project 
     @project = Project.find(params[:id])
-
   end
 
   def project_params 

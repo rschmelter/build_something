@@ -10,10 +10,15 @@ class UsersController < ApplicationController
 
   end
 
-  def projects
-    user = User.find(params[:id])
-    @projects = user.projects
-
+  def projects    
+      user = User.find_by(id: params[:id])
+      if user.nil?
+        redirect_to user_path(current_user)
+      else
+      user = User.find(params[:id])
+        @projects = user.projects     
+      end
+    
   end
 
   def new 
