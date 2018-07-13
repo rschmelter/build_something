@@ -1,16 +1,23 @@
 class ProjectsController < ApplicationController 
   
-  before_action :validate_user_project, only: [:show, :edit, :destroy]
-  before_action :set_project, only: [:show, :edit, :new, :create, :update, :destroy]
+  before_action :validate_user_project, only: [:show, :edit]
+  before_action :set_project, only: [:show, :update, :edit, :destroy]
   
   def index 
     @projects = Project.all
   end 
   
   def new  
-    @user = current_user
-    @project = @user.projects.build
-    @materials = 10.times {@project.project_materials.build}
+    if params[:user_id]
+      user = User.find_by(id: params[:user_id])
+      if user.nil? || user.id != current_user.id
+        redirect_to user_path(current_user)
+      else
+       @user = current_user
+       @project = @user.projects.build
+       @materials = 10.times {@project.project_materials.build}
+      end 
+    end
   end 
 
   def show    
