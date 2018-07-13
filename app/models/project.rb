@@ -6,7 +6,9 @@ class Project < ActiveRecord::Base
   validates :name, presence: true
   validates :project_type, presence: true
   validates :cost, presence: true
+  validates :cost, numericality: {only_integer: true}
   validates :difficulty, presence: true
+  validates :difficulty, inclusion: 1..5
   validates :instructions, presence: true
 
   accepts_nested_attributes_for :materials
