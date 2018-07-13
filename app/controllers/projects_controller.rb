@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController 
   
-  before_action :validate_user_project, only: [:show, :edit]
+  before_action :validate_user_project, only: [:edit]
   before_action :set_project, only: [:show, :update, :edit, :destroy]
   
   def index 
@@ -51,8 +51,12 @@ class ProjectsController < ApplicationController
   end
 
   def destroy 
-    @project.destroy
-    redirect_to user_path(current_user)
+    if current_user.id != @project.id
+      redirect_to user_path(current_user)
+    else 
+      @project.destroy
+      redirect_to user_path(current_user)
+    end
   end
 
   private 
