@@ -11,6 +11,12 @@ class ProjectsController < ApplicationController
       else 
         @projects = Project.order_by_hard
       end
+    elsif !params[:cost].blank? 
+      if params[:cost] == "Low"
+        @projects = Project.cheap
+      else 
+        @projects = Project.expensive
+      end
         
     else 
       @projects = Project.all

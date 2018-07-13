@@ -20,6 +20,14 @@ class Project < ActiveRecord::Base
     self.order(difficulty: :desc)
   end
 
+  def self.cheap
+    self.order(:cost)
+  end 
+
+  def self.expensive 
+    self.order(cost: :desc)
+  end 
+
   def clear_materials
     self.materials.delete_all
   end
