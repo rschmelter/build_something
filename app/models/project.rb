@@ -16,6 +16,10 @@ class Project < ActiveRecord::Base
     self.order(:difficulty)
   end
 
+  def self.order_by_hard 
+    self.order(difficulty: :desc)
+  end
+
   def clear_materials
     self.materials.delete_all
   end

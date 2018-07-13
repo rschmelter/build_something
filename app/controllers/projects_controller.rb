@@ -5,7 +5,16 @@ class ProjectsController < ApplicationController
   
   def index 
     @users = User.all
-    @projects = Project.all
+    if !params[:difficulty].blank?
+      if params[:difficulty] == "Easy"
+        @projects = Project.order_by_easy
+      else 
+        @projects = Project.order_by_hard
+      end
+        
+    else 
+      @projects = Project.all
+    end
   end 
   
   def new  
