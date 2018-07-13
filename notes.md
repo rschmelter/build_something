@@ -28,3 +28,5 @@ Test
 need to figure out what happens with set_project method, projects are showing up even though the wrong user is in the url. 
 
 Test
+
+Start moving some view logic to helpers
