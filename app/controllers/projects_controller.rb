@@ -2,6 +2,7 @@ class ProjectsController < ApplicationController
   
   before_action :validate_user_project, only: [:edit]
   before_action :set_project, only: [:show, :update, :edit, :destroy]
+  before_action :require_logged_in, only: [:new, :create]
   
   def index 
     @users = User.all
@@ -16,8 +17,7 @@ class ProjectsController < ApplicationController
         @projects = Project.cheap
       else 
         @projects = Project.expensive
-      end
-        
+      end        
     else 
       @projects = Project.all
     end
@@ -67,7 +67,7 @@ class ProjectsController < ApplicationController
   end
 
   def destroy 
-    if current_user.id != @project.id
+    if current_user.id != @project.user_id
       redirect_to user_path(current_user)
     else 
       @project.destroy
