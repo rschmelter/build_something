@@ -4,6 +4,7 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :update, :edit, :destroy]
   
   def index 
+    @users = User.all
     @projects = Project.all
   end 
   

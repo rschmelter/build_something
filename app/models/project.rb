@@ -12,7 +12,9 @@ class Project < ActiveRecord::Base
   accepts_nested_attributes_for :materials
   accepts_nested_attributes_for :project_materials
 
-
+  def self.order_by_easy
+    self.order(:difficulty)
+  end
 
   def clear_materials
     self.materials.delete_all

@@ -1,3 +1,13 @@
+<%=form_tag("/projects", method: "get") do %>
+  <%= select_tag "user", options_from_collection_for_select(@users, "id", "name"), include_blank: "User"%>
+  <%=select_tag "difficulty", options_for_select(["Easy", "Difficult"]), include_blank: "Difficulty"%> 
+  <%=select_tag "cost", options_for_select(["Low", "High"]), include_blank: "Cost"%> 
+  <%=submit_tag "Filter"%>
+<%end%>
+
+
+
+
 <ul>
 <%@projects.each do |project|%>
   <li><%=link_to project.name, user_project_path(project.user, project)%></li>
