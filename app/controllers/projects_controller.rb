@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController 
   
+  
   before_action :validate_user_project, only: [:edit]
   before_action :set_project, only: [:show, :update, :edit, :destroy]
   before_action :require_logged_in, only: [:new, :create]

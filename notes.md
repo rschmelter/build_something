@@ -30,3 +30,5 @@ need to figure out what happens with set_project method, projects are showing up
 Test
 
 Start moving some view logic to helpers
+
+Create Custom attribute writer similar to add_materials. Don't need nested attributes for materials, just projects materials. Can move params project materials into params projects.

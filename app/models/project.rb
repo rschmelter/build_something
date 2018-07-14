@@ -30,6 +30,10 @@ class Project < ActiveRecord::Base
     self.order(cost: :desc)
   end 
 
+  def tool 
+    self.materials.select {|m| m.tool == true}
+  end 
+
   def clear_materials
     self.materials.delete_all
   end
