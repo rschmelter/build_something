@@ -28,7 +28,7 @@ class SessionsController < ApplicationController
         session[:user_id] = @user.id
         redirect_to user_path(@user) 
       else 
-        redirect_to signin_path 
+        redirect_to signin_path       
       end
     end
   end
@@ -40,3 +40,4 @@ class SessionsController < ApplicationController
   
 
 end
+
