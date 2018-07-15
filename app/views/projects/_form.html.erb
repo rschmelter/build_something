@@ -34,7 +34,27 @@
 
   <h2>Add Materials:</h2>
 
-  <%=f.fields_for :project_materials, @materials do |project_material|%> 
+  <!-- <%=f.collection_select :materials, Material.all, :id, :material_name%> -->
+
+  <%=f.fields_for :materials do |m| %>
+  <%=m.collection_select :id, Material.all, :id, :material_name, include_blank: "Select Material"%> 
+    <h3>Select a Material</h3>
+    <h3>Or Create a New Material</h3>
+    <p>Type of Material:<%=m.text_field :material_name%></p>
+    <p>Check if this is a tool:<%=m.check_box :tool%> </p>
+    <h3>Enter Quantity and Size</h3>
+    <%=m.fields_for :project_materials, @project.project_materials.build do |pm|%>
+      <%=pm.label :quantity%>
+      <%=pm.number_field :quantity%> 
+      <%=pm.label :size%> 
+      <%=pm.text_field :size%>
+    <%end%>
+    <p>___________________________________________________________</p>
+  <%end%>
+  
+  
+<!-- 
+  <%=f.fields_for :project_materials do |project_material|%> 
     <p>Quantity <%=project_material.number_field :quantity%></p>
     <p>Size <%=project_material.text_field :size%></p>
 
@@ -47,7 +67,7 @@
       <p>_________________________________________________________________</p>
       <br>
       <%end%>
-    <%end%> 
+    <%end%>  -->
 
   <%=f.submit%> 
 

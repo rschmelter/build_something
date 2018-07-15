@@ -32,7 +32,7 @@ class ProjectsController < ApplicationController
       else
        @user = current_user
        @project = @user.projects.build
-       @materials = 10.times {@project.project_materials.build}
+       10.times {@project.materials.build}
       end 
     end
   end 
@@ -41,10 +41,10 @@ class ProjectsController < ApplicationController
 
   end
 
-  def create       
+  def create 
+   
     @project = current_user.projects.new(project_params)
     if @project.save
-      @project.add_materials(project_materials_params)
       redirect_to user_project_path(current_user.id, @project.id)
     else 
       @materials = 10.times {@project.project_materials.build}
@@ -98,13 +98,13 @@ class ProjectsController < ApplicationController
   end
 
   def project_params 
-    params.require(:project).permit(:name, :cost, :difficulty, :project_type, :instructions, :user_id)
+    params.require(:project).permit(:name, :cost, :difficulty, :project_type, :instructions, :user_id, materials_attributes: [:material_name, :tool, project_materials_attributes:[:quantity, :size]])
 
   end
 
-  def project_materials_params
-    params.require(:project).permit(project_materials_attributes: [:quantity, :size, :material_id, material:[:material_name, :tool]])
-  end
+  # def project_materials_params
+  #   params.require(:project).permit(project_materials_attributes: [:quantity, :size, :material_id, material:[:material_name, :tool]])
+  # end
 
 
 
