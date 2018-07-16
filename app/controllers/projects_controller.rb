@@ -101,9 +101,7 @@ class ProjectsController < ApplicationController
 
   end
 
-  # def project_materials_params
-  #   params.require(:project).permit(project_materials_attributes: [:quantity, :size, :material_id, material:[:material_name, :tool]])
-  # end
+
 
 
 
