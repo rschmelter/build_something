@@ -23,9 +23,9 @@ class Project < ActiveRecord::Base
       elsif v[:id].present? 
         material = Material.find_by(id: v[:id])
       end 
-      # v[:project_materials_attributes].values.each do |pmv|
-      #   self.project_materials.build(quantity: pmv[:quantity], size: pmv[:size], material_id: material.id, project_id: self.id])
-      # end
+      if v[:project_materials][:quantity].present? || v[:project_materials][:size].present?
+        ProjectMaterial.create(quantity: v[:project_materials][:quantity], size: v[:project_materials][:size], project: self, material: material)
+      end
 
     end
   end

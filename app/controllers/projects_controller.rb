@@ -42,7 +42,6 @@ class ProjectsController < ApplicationController
   end
 
   def create 
-   binding.pry
     @project = current_user.projects.new(project_params)
     if @project.save
       redirect_to user_project_path(current_user.id, @project.id)
@@ -98,7 +97,7 @@ class ProjectsController < ApplicationController
   end
 
   def project_params 
-    params.require(:project).permit(:name, :cost, :difficulty, :project_type, :instructions, :user_id, materials_attributes: [:material_name, :tool, project_materials_attributes: [:quantity, :size]])
+    params.require(:project).permit(:name, :cost, :difficulty, :project_type, :instructions, :user_id, materials_attributes: [:material_name, :id, :tool, project_materials: [:quantity, :size]])
 
   end
 
