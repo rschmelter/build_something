@@ -45,23 +45,23 @@ class ProjectsController < ApplicationController
     @project = current_user.projects.new(project_params)
     if @project.save
       redirect_to user_project_path(current_user.id, @project.id)
-    else 
-      @materials = 10.times {@project.project_materials.build}
+    else  
+
+      10.times {@project.materials.build}
       render :new
     end
   end
 
   def edit 
-      @materials = 10.times{@project.project_materials.build}   
+    10.times {@project.materials.build}  
 
   end
 
   def update 
     if @project.update(project_params)
-      @project.add_materials(project_materials_params)
       redirect_to user_project_path(current_user.id, @project.id)
     else 
-      @materials = 10.times {@project.project_materials.build}
+      10.times {@project.materials.build}
       render :new
     end
   end
