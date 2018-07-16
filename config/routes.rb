@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get "/users/:id/projects", to: "users#projects"
 
   resources :projects, only: [:index, :create, :update, :destroy]
-  resources :materials. only: [:index]
+  resources :materials, only: [:index]
 
 
 end
