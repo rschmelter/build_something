@@ -1,9 +1,9 @@
 class ProjectsController < ApplicationController 
   
   
-  before_action :validate_user_project, only: [:edit]
-  before_action :set_project, only: [:show, :update, :edit, :destroy]
-  before_action :require_logged_in, only: [:new, :create]
+
+  before_action :set_user_project, only: [:show, :edit]
+  before_action :require_logged_in
   
   def index 
     @users = User.all
@@ -37,8 +37,8 @@ class ProjectsController < ApplicationController
     end
   end 
 
-  def show    
-
+  def show
+   
   end
 
   def create 
@@ -53,7 +53,11 @@ class ProjectsController < ApplicationController
   end
 
   def edit 
-    10.times {@project.materials.build}  
+    if @project.nil? || @project.user != current_user
+      redirect_to user_path(current_user)
+    else
+      10.times {@project.materials.build}  
+    end
 
   end
 
@@ -76,25 +80,19 @@ class ProjectsController < ApplicationController
   end
 
   private 
-
-  def validate_user_project 
+  def set_user_project 
     if params[:user_id]
       user = User.find_by(id: params[:user_id])
       if user.nil? 
         redirect_to user_path(current_user)
-      else
-        @project = user.projects.find_by(id: params[:id])
-      end 
+      else 
+        @project = Project.find_by(id: params[:id])
+      end
     end 
-    if @project.nil? || @project.user != current_user
-      redirect_to user_path(current_user)
-    end
-  end    
+  end 
 
 
-  def set_project 
-    @project = Project.find(params[:id])
-  end
+
 
   def project_params 
     params.require(:project).permit(:name, :cost, :difficulty, :project_type, :instructions, :user_id, materials_attributes: [:material_name, :id, :tool, project_materials: [:quantity, :size]])
