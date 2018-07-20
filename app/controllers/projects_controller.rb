@@ -62,6 +62,8 @@ class ProjectsController < ApplicationController
   end
 
   def update 
+    binding.pry
+    @project = Project.find(params[:id])
     if @project.update(project_params)
       redirect_to user_project_path(current_user.id, @project.id)
     else 
@@ -71,6 +73,7 @@ class ProjectsController < ApplicationController
   end
 
   def destroy 
+    @project = Project.find(params[:id])
     if current_user.id != @project.user_id
       redirect_to user_path(current_user)
     else 
