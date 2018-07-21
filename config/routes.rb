@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   end
 
   get "/users/:id/projects", to: "users#projects"
+  get "/materials/popular", to: 'projectmaterial#most_common'
 
   resources :projects, only: [:index, :create, :update, :destroy]
   resources :materials, only: [:index]
