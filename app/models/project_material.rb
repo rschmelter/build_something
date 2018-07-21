@@ -9,7 +9,7 @@ def self.material_id_count
 end 
 
 def self.most_common_material_id
-  material_id_count.first[0]
+  self.material_id_count.first[0]
 end 
 
 end
