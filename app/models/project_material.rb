@@ -8,19 +8,31 @@ def self.material_id_count
   self.group(:material_id).count
 end 
 
-def self.most_common_material_id
-  id = self.material_id_count.sort_by{|k, v| v}
-  id.last[0]
+def self.sort_material_ids
+  self.material_id_count.sort_by{|k, v| v}
+  
 end 
 
 def self.tools
   tools = []
-  self.material_id_count.each do |kv|
+  self.sort_material_ids.each do |kv|
     m = Material.find(kv[0])
     if m.tool
       tools << m 
     end 
   end
+  tools
 end
+
+def self.materials
+  raw_materials = []
+  self.sort_material_ids.each do |kv|
+    m = Material.find(kv[0])
+    if m.tool == false
+      raw_materials << m 
+    end 
+  end
+  raw_materials
+end 
 
 end

@@ -2,9 +2,10 @@ class ProjectMaterialsController < ApplicationController
 
 
   def most_common
-    id = ProjectMaterial.most_common_material_id
+    id = ProjectMaterial.sort_material_ids.last[0]
     @material = Material.find(id)
     @tools = ProjectMaterial.tools
+    @raw_materials = ProjectMaterial.raw_materials
   end 
 
 
