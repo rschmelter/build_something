@@ -13,5 +13,7 @@
 <p><%=@project.instructions%></p>
 
 <%if @project.user_id == current_user.id%>
+  <%=link_to "Edit this Project", edit_user_project_path(current_user, @project)%>
+  <br>
   <%=link_to "Delete this Project", @project, method: :delete, data: {confirm: "Are you sure you want to delete this project?"}%>
 <%end%>
