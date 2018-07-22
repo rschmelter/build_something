@@ -24,7 +24,7 @@ def self.tools
   tools
 end
 
-def self.materials
+def self.raw_materials
   raw_materials = []
   self.sort_material_ids.each do |kv|
     m = Material.find(kv[0])
