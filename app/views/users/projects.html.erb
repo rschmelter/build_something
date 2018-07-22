@@ -2,6 +2,6 @@
 
 <ul>
 <%@projects.each do |project|%>
-  <li><%=project.name%></li>
+  <li><%=link_to project.name, user_project_path(project.user, project)%></li>
 <%end%>
 <ul>
