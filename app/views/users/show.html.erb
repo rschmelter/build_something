@@ -1,10 +1,11 @@
 <%title @user.name%>
 
-<h1> Hello <%=@user.name%></h1>
+<h1><%=@user.name%></h1>
 
 
 <%if current_user.id == @user.id%>
 <p><%=link_to "Create a New Project", new_user_project_path(@user)%> </p>
+<p><%=link_to "See Your Projects", user_projects_path(@user)%></p>
 
 <%= link_to "Delete Your Account", current_user, method: :delete, data: {confirm: "Are You Sure You Want to Delete Your Account? All of Your Projects Will Be Lost."} %>
 
