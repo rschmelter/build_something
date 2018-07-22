@@ -13,4 +13,14 @@ def self.most_common_material_id
   id.last[0]
 end 
 
+def self.tools
+  tools = []
+  self.material_id_count.each do |kv|
+    m = Material.find(kv[0])
+    if m.tool
+      tools << m 
+    end 
+  end
+end
+
 end

@@ -1,1 +1,8 @@
 <h1><%=@material.material_name%> is the most common material used in projects</h1>
+
+<ul>
+  <%@tools.each do |tool|%>
+    <li><%=tool.material_name%></li>
+<%end%>
+    
+</ul>
