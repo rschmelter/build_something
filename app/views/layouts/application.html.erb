@@ -12,7 +12,10 @@
   <body>
 
     <%if current_user%>
+      <%=link_to "Home", user_path(current_user)%>
+      <br>
       <%=link_to "Signout", signout_path%>
+     
     <%end%>
     <%= yield %>
   </body>
