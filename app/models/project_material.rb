@@ -9,7 +9,8 @@ def self.material_id_count
 end 
 
 def self.most_common_material_id
-  self.material_id_count.first[0]
+  id = self.material_id_count.sort_by{|k, v| v}
+  id.last[0]
 end 
 
 end
