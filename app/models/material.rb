@@ -4,12 +4,5 @@ class Material < ActiveRecord::Base
 
   
 
-  def self.tool 
-    where(tool: true)
-  end
-
-  def self.raw_material
-    where(tool: false)
-  end 
 
 end

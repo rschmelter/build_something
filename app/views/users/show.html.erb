@@ -7,6 +7,7 @@
 <p><%=link_to "Create a New Project", new_user_project_path(@user)%> </p>
 <p><%=link_to "See Your Projects", user_projects_path(@user)%></p>
 <p><%=link_to "Browse Users", users_path%></p>
+<p><%=link_to "Browse Materials", materials_path%></p>
 <p><%=link_to "Browse Projects", projects_path%></p>
 
 <%= link_to "Delete Your Account", current_user, method: :delete, data: {confirm: "Are You Sure You Want to Delete Your Account? All of Your Projects Will Be Lost."} %>
