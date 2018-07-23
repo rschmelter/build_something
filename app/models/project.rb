@@ -57,6 +57,9 @@ class Project < ActiveRecord::Base
     self.materials.delete_all
   end
 
+  def delete_material(name)
+    material = self.materials.delete(Material.find_by(material_name: name))
 
+  end 
 
 end
