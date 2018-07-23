@@ -55,19 +55,15 @@ class ProjectsController < ApplicationController
   def edit 
     if @project.nil? || @project.user != current_user
       redirect_to user_path(current_user)
-    else
-      10.times {@project.materials.build}  
     end
 
   end
 
   def update 
-    binding.pry
     @project = Project.find(params[:id])
     if @project.update(project_params)
       redirect_to user_project_path(current_user.id, @project.id)
     else 
-      10.times {@project.materials.build}
       render :new
     end
   end

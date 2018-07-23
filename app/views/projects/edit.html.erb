@@ -1,3 +1,40 @@
 <h1>Update Your Project</h1>
 
-<%= render "form" %> 
+<%=form_for [@user, @project] do |f|%> 
+  <%if @project.errors.any?%>
+    <h3>There were some errors:</h3>
+    <ul>
+      <%@project.errors.full_messages.each do |message|%>
+        <li><%=message%></li>
+      <%end%>
+    </ul>
+  <%end%>
+
+
+  <%=f.hidden_field :user_id%> 
+
+  <%=f.label "Project Name:"%>
+  <%=f.text_field :name%> <br>
+  <br>
+
+  <%=f.label "What Type of project is this?"%>
+  <%=f.text_field :project_type%> <br>
+  <br>
+
+  <%=f.label "How much does it cost? $"%>
+  <%=f.number_field :cost%> <br>
+  <br>
+
+  <%=f.label "Rate difficulty from 1 - 5"%>
+  <%=f.number_field :difficulty%> <br>
+  <br>
+
+  <%=f.label "Instructions"%>
+  <%=f.text_area :instructions%>
+  <br>
+  
+
+
+  <%=f.submit%> 
+
+<%end%>
