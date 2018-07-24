@@ -10,6 +10,7 @@
 <p><%=link_to "Browse Materials", materials_path%></p>
 <p><%=link_to "Browse Projects", projects_path%></p>
 
-<%= link_to "Delete Your Account", current_user, method: :delete, data: {confirm: "Are You Sure You Want to Delete Your Account? All of Your Projects Will Be Lost."} %>
+<p><%=link_to "Update Your Account", edit_user_path(current_user)%></p>
+<p><%= link_to "Delete Your Account", current_user, method: :delete, data: {confirm: "Are You Sure You Want to Delete Your Account? All of Your Projects Will Be Lost."} %></p>
 
 <%end%>
