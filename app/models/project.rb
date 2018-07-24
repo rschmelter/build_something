@@ -16,7 +16,7 @@ class Project < ActiveRecord::Base
   def materials_attributes=(materials_attributes)
     materials_attributes.values.each do |v|
       if v[:material_name].present? 
-        material_name = v[:material_name].downcase
+        material_name = v[:material_name].downcase.strip
         material = Material.find_or_create_by(material_name: material_name)
         material.update(tool: v[:tool])
       elsif v[:id].present? 
