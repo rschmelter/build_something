@@ -32,6 +32,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def update 
+    if @user.update(user_params)
+      redirect_to user_path(@user)
+    else 
+      render :edit
+    end
+  end 
+
   def destroy 
     session.clear
     @user.destroy
