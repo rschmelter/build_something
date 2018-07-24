@@ -22,6 +22,10 @@ class UsersController < ApplicationController
     end
   end 
 
+  def edit 
+    redirect_to user_path(current_user) unless @user.id == current_user.id
+  end 
+
   def create 
     @user = User.new(user_params)
     if @user.save 
