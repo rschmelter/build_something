@@ -7,8 +7,4 @@ Test
 - REQUIRE project materials presence
 - Add ability to delete material from associaton and add material and pm
 
-- TEST
-  test
-Test
-
-test
+- Review logic in controllers 
