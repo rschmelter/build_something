@@ -8,5 +8,3 @@ Test
 - Add ability to delete material from associaton and add material and pm
 
 - Review logic in controllers 
-- Include update method for user
-- Test
