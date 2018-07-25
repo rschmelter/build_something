@@ -8,3 +8,4 @@ Test
 - Add ability to delete material from associaton and add material and pm
 
 - Review logic in controllers 
+- Add explanations to spec
