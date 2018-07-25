@@ -17,9 +17,12 @@ Specs:
 
  [x]Include signup (how e.g. Devise) (Signup can be completed through Github using Omniauth gem. There is also custom logic for signing up for an account and authentication using bcrypt and has_secure_password)
 
- [x]Include login (how e.g. Devise)
- [x]Include logout (how e.g. Devise)
- [x]Include third party signup/login (how e.g. Devise/OmniAuth)
+ [x]Include login (how e.g. Devise) (Custom login logic is used in User Model and controller and application controller)
+
+ [x]Include logout 
+
+ [x]Include third party signup/login (how e.g. Devise/OmniAuth)(how e.g. Devise) (Third party signup through Github using the Omniauth gem)
+
  [x]Include nested resource show or index (URL e.g. users/2/recipes)
  [x]Include nested resource "new" form (URL e.g. recipes/1/ingredients)
  [x]Include form display of validation errors (form URL e.g. /recipes/new)
