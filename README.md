@@ -1,30 +1,9 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a woodworking project manager app created for a rails project at Flatiron School.
 
-Things you may want to cover:
+It allows you to add projects, including materials required and instructions.
 
-* Ruby version
+To install locally, fork the repo, bundle install, rake db:migrate, and rails s browse to http://localhost:3000
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-Test test test 
-
-Test again
-Another test
-Git test 
+MIT License
