@@ -2,13 +2,21 @@ Specifications for the Rails Assessment
 Specs:
 
  [x]Using Ruby on Rails for the project
- [x]Include at least one has_many relationship (x has_many y e.g. [ [ ]]User has_many Recipes)
- [x]Include at least one belongs_to relationship (x belongs_to y e.g. Post belongs_to User)
- [x]Include at least one has_many through relationship (x has_many y through z e.g. Recipe has_many Items through Ingredients)
- [x]The "through" part of the has_many through includes at least one user submittable attribute (attribute_name e.g. ingredients.quantity)
- [x]Include reasonable validations for simple model objects (list of model objects with validations e.g. User, Recipe, Ingredient, Item)
- [x]Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
- [x]Include signup (how e.g. Devise)
+
+ [x]Include at least one has_many relationship (x has_many y e.g. [ [ ]]User has_many Recipes) (A User has many projects. Project and Material have a bi-directional has many through relationship with ProjectMaterial as a join table)
+
+ [x]Include at least one belongs_to relationship (x belongs_to y e.g. Post belongs_to User) (A project belongs to a user. ProjectMaterial belongs to a Material and a project)
+
+ [x]Include at least one has_many through relationship (x has_many y through z e.g. Recipe has_many Items through Ingredients) (Project and Material have a bi directional has many through relatonship with ProjectMaterial as a joing table)
+
+ [x]The "through" part of the has_many through includes at least one user submittable attribute (attribute_name e.g. ingredients.quantity) (ProjectMaterial is a join table that has both size and quantity attributes that can be submitted by the user)
+
+ [x]Include reasonable validations for simple model objects (list of model objects with validations e.g. User, Recipe, Ingredient, Item) (Validations are included on the User to ensure uniqueness and presence of require fields. The Project model has validations to ensure the presence of required fields and that the right type of data is being submitted)
+
+ [x]Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes) (The Project model has class scope methods for ordering objects on the project index page. The ProjectMaterial model has a class scope method for determining the most commonly used material)
+
+ [x]Include signup (how e.g. Devise) (Signup can be completed through Github using Omniauth gem. There is also custom logic for signing up for an account and authentication using bcrypt and has_secure_password)
+
  [x]Include login (how e.g. Devise)
  [x]Include logout (how e.g. Devise)
  [x]Include third party signup/login (how e.g. Devise/OmniAuth)
