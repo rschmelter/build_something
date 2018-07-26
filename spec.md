@@ -36,7 +36,7 @@ Specs:
  (Projects are nested under Uers. User can navigate to user/:id/projects/:id)
 
  [x]Include nested resource "new" form (URL e.g. recipes/1/ingredients) 
- (A user creates a new project through a nested resource - user/:id/projects/new)
+ (A user creates a new project through a nested resource  user/:id/projects/new)
 
  [x]Include form display of validation errors (form URL e.g. /recipes/new)
   (Logic is used in form views to display errors and fields_with_errors wraps fields submitted with invalid data. The form is rendered to maintain data that the user attempted to submit)
