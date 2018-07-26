@@ -19,16 +19,20 @@ Specs:
 
  [x]Include login (how e.g. Devise) (Custom login logic is used in User Model and controller and application controller)
 
- [x]Include logout 
+ [x]Include logout (Custom logic is used to clear the session and return the user to the login page)
 
  [x]Include third party signup/login (how e.g. Devise/OmniAuth)(how e.g. Devise) (Third party signup through Github using the Omniauth gem)
 
- [x]Include nested resource show or index (URL e.g. users/2/recipes)
- [x]Include nested resource "new" form (URL e.g. recipes/1/ingredients)
- [x]Include form display of validation errors (form URL e.g. /recipes/new)
+ [x]Include nested resource show or index (URL e.g. users/2/recipes) (Projects are nested under Uers. User can navigate to user/:id/projects/:id)
+
+ [x]Include nested resource "new" form (URL e.g. recipes/1/ingredients) (A user creates a new project through a nested resource - user/:id/projects/new)
+
+ [x]Include form display of validation errors (form URL e.g. /recipes/new) (Logic is used in form views to display errors and fields_with_errors wraps fields submitted with invalid data. The form is rendered to maintain data that the user attempted to submit)
+
+
 Confirm:
 
  [x]The application is pretty DRY
  [x]Limited logic in controllers
  [x]Views use helper methods if appropriate
- [x]Views use partials if appropriatea
+ [x]Views use partials if appropriate
