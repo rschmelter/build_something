@@ -1,8 +1,6 @@
 
 <h2><%=@user.name%>'s Projects</h2>
 
-<ul>
-<%@projects.each do |project|%>
-  <li><%=link_to project.name, user_project_path(project.user, project)%></li>
-<%end%>
+<ul id="user_projects">
+
 </ul>
