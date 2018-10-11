@@ -3,3 +3,9 @@
 //         $(this).fadeOut(100);
 //     });
 // })
+
+$(document).ready(function(){
+    
+
+
+})
