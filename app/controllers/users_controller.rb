@@ -1,5 +1,5 @@
 class UsersController < ApplicationController 
-  before_action :set_user, only: [:show, :projects, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
   
   def index 
     @users = User.all
@@ -11,7 +11,9 @@ class UsersController < ApplicationController
   end
 
   def projects    
-    
+    @user = User.find(params[:id])
+    @projects = @user.projects
+    render json: @projects
   end
 
   def new 
