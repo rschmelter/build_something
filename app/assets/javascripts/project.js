@@ -8,9 +8,9 @@ $(function(){
             url: this.href
         }).done(function(response){
             response.forEach(function(item){
-                debugger
                 let project = new Project(item);
-                $("#user_projects").append(project.formatProject());
+                $("#user_projects").append("<li>" + project.formatProject() + "</li>")
+               
             });
 
         });
@@ -23,11 +23,11 @@ class Project{
         this.id = projectJson.id;
         this.name = projectJson.name;
         this.project_type = projectJson.project_type;
+        this.cost = projectJson.cost;
     };
 
     formatProject() {
-        return `${this.name} is a ${this.project_type} project`;
+        return `${this.name}: This is a ${this.project_type} project that costs $${this.cost} to make.`;
     }
 };
 
-// grab attributes to append to the page.
