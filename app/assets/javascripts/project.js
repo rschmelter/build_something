@@ -7,7 +7,11 @@ $(function(){
             method: "GET",
             url: this.href
         }).done(function(response){
-            console.log(response)
+            response.forEach(function(item){
+                debugger
+                let project = new Project(item);
+                $("#user_projects").append(project.formatProject());
+            });
 
         });
         e.preventDefault();
