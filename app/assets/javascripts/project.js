@@ -2,14 +2,16 @@
 
 $(function(){
     $("#load_projects").on("click", function(e){
-        
         $.ajax({
             method: "GET",
             url: this.href
         }).done(function(response){
+            let $userProjects = $("#user_projects")
+            $userProjects.html("")
             response.forEach(function(item){
                 let project = new Project(item);
-                $("#user_projects").append("<li>" + project.formatProject() + "</li>")
+
+                $userProjects.append("<li>" + project.formatProject() + "</li>")
                
             });
 
