@@ -15,7 +15,7 @@
 
 <%end%>
 
-<button id="load_projects">Load Projects</button>
+<p><%=link_to "Load Projects", user_projects_path(@user), :id => "load_projects"%></p>
 
-<ul id="user_projects">
-</ul>
+<div id="user_projects">
+</div>

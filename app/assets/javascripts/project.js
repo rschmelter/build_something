@@ -4,8 +4,16 @@
 //     });
 // })
 
-$(document).ready(function(){
-    
+$(function(){
+    $("#load_projects").on("click", function(e){
+        
+        $.ajax({
+            method: "GET",
+            url: this.href
+        }).done(function(response){
+            console.log(response)
 
-
-})
+        });
+        e.preventDefault();
+    });
+});
