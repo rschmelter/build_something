@@ -10,8 +10,9 @@ $(function(){
             $userProjects.html("")
             response.forEach(function(item){
                 let project = new Project(item);
+                let url = `/users/${project.user_id}/projects/${project.id}`
 
-                $userProjects.append("<li>" + project.formatProject() + "</li>")
+                $userProjects.append("<li>" + project.formatProject() + "</li>" + "<a href="+url+">See Full Project</a>")
                
             });
 
@@ -23,6 +24,7 @@ $(function(){
 class Project{
     constructor(projectJson) {
         this.id = projectJson.id;
+        this.user_id = projectJson.user_id;
         this.name = projectJson.name;
         this.project_type = projectJson.project_type;
         this.cost = projectJson.cost;
