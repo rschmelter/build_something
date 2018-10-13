@@ -11,13 +11,11 @@ $(function(){
             response.forEach(function(item){
                 let project = new Project(item);
                 let materials = project.materials
-                // let $projectLi = $userProjects.append(`<li id><ul class=${project.id}></ul></li>`)
                 
                 
                 let url = `/users/${project.user_id}/projects/${project.id}`
                 $userProjects.append("<li>" + project.formatIntro() + "<br>" + "<a href="+url+">See Full Project</a>"  + "<br>" + "Materials Required:" + "<br>" + `<ul class=${project.id}></ul>` + "</li>")
 
-                // $projectLi.append(project.formatIntro() + "<a href="+url+">See Full Project</a>")
                 materials.forEach(function(mat){
                     $(`.${project.id}`).append("<li>" + mat.material_name + "</li>")
                 });
