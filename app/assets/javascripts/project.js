@@ -11,13 +11,17 @@ $(function(){
             response.forEach(function(item){
                 let project = new Project(item);
                 let materials = project.materials
-                let $projectLi = $userProjects.append(`<li id=${project.id}></li>`)
-                let $materialUl = $projectLi.append("<ul></ul>")
+                // let $projectLi = $userProjects.append(`<li id><ul class=${project.id}></ul></li>`)
+                
                 
                 let url = `/users/${project.user_id}/projects/${project.id}`
+                $userProjects.append("<li>" + project.formatIntro() + "<a href="+url+">See Full Project</a>"  + `<ul class=${project.id}></ul>` + "</li>")
 
-                $projectLi.append(project.formatIntro() + "<a href="+url+">See Full Project</a>")
-                                         
+                // $projectLi.append(project.formatIntro() + "<a href="+url+">See Full Project</a>")
+                materials.forEach(function(mat){
+                    $(`.${project.id}`).append("<li>" + mat.material_name + "</li>")
+                });
+                
             });
 
         });
@@ -39,11 +43,6 @@ class Project{
     formatIntro() {
         return `${this.name}: This is a ${this.project_type} project that costs $${this.cost} to make.`;
     }
-    // formatProject() {
-    //     $app
-    //     let materials_list = this.materials.forEach(function(item){
-            
-    //     })
-    // }
+
 };
 
