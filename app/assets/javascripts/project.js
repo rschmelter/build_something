@@ -15,7 +15,7 @@ $(function(){
                 
                 
                 let url = `/users/${project.user_id}/projects/${project.id}`
-                $userProjects.append("<li>" + project.formatIntro() + "<a href="+url+">See Full Project</a>"  + `<ul class=${project.id}></ul>` + "</li>")
+                $userProjects.append("<li>" + project.formatIntro() + "<br>" + "<a href="+url+">See Full Project</a>"  + "<br>" + "Materials Required:" + "<br>" + `<ul class=${project.id}></ul>` + "</li>")
 
                 // $projectLi.append(project.formatIntro() + "<a href="+url+">See Full Project</a>")
                 materials.forEach(function(mat){
