@@ -28,6 +28,8 @@ class Project{
         this.name = projectJson.name;
         this.project_type = projectJson.project_type;
         this.cost = projectJson.cost;
+        
+        this.materials = projectJson.materails;
     };
 
     formatProject() {
