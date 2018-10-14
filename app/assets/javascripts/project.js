@@ -32,7 +32,10 @@ class Project{
         this.name = projectJson.name;
         this.project_type = projectJson.project_type;
         this.cost = projectJson.cost;
-        
+        this.difficulty = projectJson.difficulty;
+        this.instructions = projectJson.instructions;
+
+        this.project_materials = projectJson.project_materials        
         this.materials = projectJson.materials;
     };
 
