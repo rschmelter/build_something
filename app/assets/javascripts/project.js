@@ -45,7 +45,7 @@ class Project{
 
     getMaterial(matId) {
         this.materials.find(function(e){
-            let material e.id === matId
+            let material = e.id === matId
         });
         return material.material_name
     }
