@@ -18,10 +18,8 @@ $(function(){
 
                 materials.forEach(function(mat){
                     $(`.${project.id}`).append("<li>" + mat.material_name + "</li>")
-                });
-                
+                });                
             });
-
         });
         e.preventDefault();
     });
