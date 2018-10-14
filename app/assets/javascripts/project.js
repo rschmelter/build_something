@@ -43,5 +43,9 @@ class Project{
         return `${this.name}: This is a ${this.project_type} project that costs $${this.cost} to make.`;
     }
 
+    formatFullProject() {
+        return `Name: ${this.name} <br> Project Type: ${this.project_type} <br> Cost: ${this.cost} <br> Difficulty: ${this.difficulty} <br> Instructions: <br> ${this.instructions}`
+    }
+
 };
 
