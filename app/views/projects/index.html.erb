@@ -9,7 +9,7 @@
 
 <ul>
 <%@projects.each do |project|%>
-  <li><%=link_to project.name, user_project_path(project.user, project)%></li>
+  <li><%=link_to project.name, user_project_path(project.user, project), :class => "full_project"%></li>
     <ul>
       <li>Type: <%=project.project_type%></li>
       <li>Cost: $<%=project.cost%></li>
@@ -17,3 +17,4 @@
     </ul>
 <%end%>
 </ul>
+
