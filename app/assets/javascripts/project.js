@@ -11,7 +11,7 @@ $(function(){
             response.forEach(function(item){
                 let project = new Project(item);
                 let materials = project.materials
-                
+                debugger
                 
                 let url = `/users/${project.user_id}/projects/${project.id}`
                 $userProjects.append("<li>" + project.formatIntro() + "<br>" + "<a href="+url+" class='full_project'>See Full Project</a>"  + "<br>" + "Materials Required:" + "<br>" + `<ul class=${project.id}></ul>` + "</li>")
@@ -35,12 +35,24 @@ class Project{
         this.difficulty = projectJson.difficulty;
         this.instructions = projectJson.instructions;
 
-        this.project_materials = projectJson.project_materials        
+        this.project_materials = projectJson.project_materials;        
         this.materials = projectJson.materials;
     };
 
     formatIntro() {
         return `${this.name}: This is a ${this.project_type} project that costs $${this.cost} to make.`;
+    }
+
+    getMaterial(matId) {
+        this.materials.find(function(e){
+            return e.id === matId
+        })
+    }
+
+    formatMaterials() {
+        this.project_materials.forEach(function(pm){
+            
+        })
     }
 
     formatFullProject() {
