@@ -57,7 +57,7 @@ class Project{
     }
 
     formatFullProject() {
-        return `Name: ${this.name} <br> Project Type: ${this.project_type} <br> Cost: ${this.cost} <br> Difficulty: ${this.difficulty} <br> Instructions: <br> ${this.instructions}`
+        return `Name: ${this.name} <br> Project Type: ${this.project_type} <br> Cost: ${this.cost} <br> Difficulty: ${this.difficulty} <br> <div id=${this.id}></div> <br> Instructions: <br> ${this.instructions} <br>`
     }
 
 };
