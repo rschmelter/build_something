@@ -11,10 +11,10 @@ $(function(){
             response.forEach(function(item){
                 let project = new Project(item);
                 let materials = project.materials
-                debugger
+               
                 
                 let url = `/users/${project.user_id}/projects/${project.id}`
-                $userProjects.append(`<div id=${project.id}></div>` + "<li>" + project.formatIntro() + "<br>" + "<a href="+url+" class='full_project'>See Full Project</a>"  + "<br>" + "Materials Required:" + "<br>" + `<ul class=${project.id}></ul>` + "</li>")
+                $userProjects.append(`<div id=${project.id}>` + "<li>" + project.formatIntro() + "<br>" + "<a href="+url+" class='full_project'>See Full Project</a>"  + "<br>" + "Materials Required:" + "<br>" + `<ul class=${project.id}></ul>` + "</li>" + "</div>")
 
                 materials.forEach(function(mat){
                     $(`.${project.id}`).append("<li>" + mat.material_name + "</li>")
@@ -29,14 +29,19 @@ $(function(){
     $(".full_project").on("click", function(e){
         $.ajax({
             method: "GET",
-            url: this.href
+            url: this.href           
         }).done(function(response){
+           response.forEach(function(item){
+               debugger
+           })
+           
 
-        })
+        });
         e.preventDefault();
-    })
+    });
+    
+});
 
-})
 
 
 
