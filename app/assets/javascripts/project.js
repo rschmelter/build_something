@@ -34,7 +34,8 @@ $(function(){
             method: "GET",
             url: this.href           
         }).done(function(response){
-          console.log(response)
+          let project = new Project(response);
+          debugger
            
            
         });
