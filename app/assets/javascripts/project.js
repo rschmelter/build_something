@@ -34,9 +34,10 @@ $(function(){
             method: "GET",
             url: this.href           
         }).done(function(response){
-          let project = new Project(response);
-          debugger
-           
+            let project = new Project(response);
+            let $projectDiv = $(`#${project.id}`);
+            $projectDiv.html("");
+            $projectDiv.append(project.formatFullProject());
            
         });
         
