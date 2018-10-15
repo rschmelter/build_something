@@ -36,9 +36,13 @@ $(function(){
         }).done(function(response){
             let project = new Project(response);
             let $projectDiv = $(`#${project.id}`);
+            
             $projectDiv.html("");
             $projectDiv.append(project.formatFullProject());
-           
+            
+            project.materialsArray().forEach(function(item){
+                $(`#${project.id}material`).append("<li>" + item + "</li>");
+            });
         });
         
     });
@@ -81,7 +85,7 @@ class Project{
     }
 
     formatFullProject() {
-        return `Name: ${this.name} <br> Project Type: ${this.project_type} <br> Cost: ${this.cost} <br> Difficulty: ${this.difficulty} <br> <div id=${this.id}></div> <br> Instructions: <br> ${this.instructions} <br>`
+        return `Name: ${this.name} <br> Project Type: ${this.project_type} <br> Cost: ${this.cost} <br> Difficulty: ${this.difficulty} <br> <ul id=${this.id}material></ul> <br> Instructions: <br> ${this.instructions} <br> <br>`
     }
 
 };
