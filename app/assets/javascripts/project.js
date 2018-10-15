@@ -48,7 +48,7 @@ class Project{
         return material.material_name
     }
 
-    formatMaterials() {
+    materialsArray() {
        let items = []
        this.projectMaterials.forEach(function(pm){
            items.push(`Material: ${this.getMaterial(pm.material_id)} | Size: ${pm.size} | Quantity: ${pm.quantity}`)
@@ -62,4 +62,3 @@ class Project{
 
 };
 
-// return this.projectMaterials.map(x => x.material_id)
