@@ -14,7 +14,7 @@ $(function(){
                
                 
                 let url = `/users/${project.user_id}/projects/${project.id}`
-                $userProjects.append(`<div id=${project.id}>` + "<li>" + project.formatIntro() + "<br>" + "<a href="+url+" class='full_project'>See Full Project</a>"  + "<br>" + "Materials Required:" + "<br>" + `<ul class=${project.id}></ul>` + "</li>" + "</div>")
+                $userProjects.append(`<div id=${project.id}>` + "<li>" + project.formatIntro() + "<br>" + "<a class='full_project' href=" + url + "> See Full Project </a>"  + "<br>" + "Materials Required:" + "<br>" + `<ul class=${project.id}></ul>` + "</li>" + "</div>")
 
                 materials.forEach(function(mat){
                     $(`.${project.id}`).append("<li>" + mat.material_name + "</li>")
@@ -26,21 +26,23 @@ $(function(){
 });
 
 $(function(){
-    $(".full_project").on("click", function(e){
+    
+    $("body").on("click", ".full_project", function(e){
+        e.preventDefault();
+        
         $.ajax({
             method: "GET",
             url: this.href           
         }).done(function(response){
-           response.forEach(function(item){
-               debugger
-           })
+          console.log(response)
            
-
+           
         });
-        e.preventDefault();
+        
     });
     
 });
+
 
 
 
