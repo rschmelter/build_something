@@ -43,10 +43,8 @@ class Project{
         return `${this.name}: This is a ${this.project_type} project that costs $${this.cost} to make.`;
     }
 
-    getMaterial(matId) {
-        this.materials.find(function(e){
-            let material = e.id === matId
-        });
+    getMaterial(id) {
+        let material = this.materials.find(x => x.id === id);
         return material.material_name
     }
 
