@@ -35,7 +35,7 @@ class Project{
         this.difficulty = projectJson.difficulty;
         this.instructions = projectJson.instructions;
 
-        this.project_materials = projectJson.project_materials;        
+        this.projectMaterials = projectJson.project_materials;        
         this.materials = projectJson.materials;
     };
 
@@ -49,9 +49,11 @@ class Project{
     }
 
     formatMaterials() {
-        this.project_materials.forEach(function(pm){
-            
-        })
+       let items = []
+       this.projectMaterials.forEach(function(pm){
+           items.push(`Material: ${this.getMaterial(pm.material_id)} | Size: ${pm.size} | Quantity: ${pm.quantity}`)
+       }.bind(this))
+       return items
     }
 
     formatFullProject() {
@@ -60,3 +62,4 @@ class Project{
 
 };
 
+// return this.projectMaterials.map(x => x.material_id)
