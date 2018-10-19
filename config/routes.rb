@@ -17,6 +17,6 @@ Rails.application.routes.draw do
   get "/materials", to: 'project_materials#materials'
 
   resources :projects, only: [:index, :create, :update, :destroy]
-  resources :materials, only [:show]
+  resources :materials, only: [:show]
 
 end

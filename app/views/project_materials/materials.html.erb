@@ -3,7 +3,7 @@
 <p>Tools Used in Projects:</p>
 <ul>
   <%@tools.each do |tool|%>
-    <li><%=tool.material_name%></li>
+    <li><%=link_to tool.material_name, material_path(tool)%></li>
   <%end%>    
 </ul>
 
@@ -11,6 +11,8 @@
 <p>Raw Materials Used in Projects:</p>
 <ul>
   <%@raw_materials.each do |raw_material|%>
-    <li><%=raw_material.material_name%></li>
+    <li><%=link_to raw_material.material_name, material_path(raw_material)%></li>
   <%end%>
 </ul>
+
+
