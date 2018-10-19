@@ -9,7 +9,11 @@ class MaterialsController < ApplicationController
         @materials = Material.all
     end 
 
-
+    def recommendations
+        @material = Material.find(params[:id])
+        @recommendations = @material.recommendations 
+        render json: @recommendations
+    end
 
 
 end
