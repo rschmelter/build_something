@@ -18,6 +18,9 @@ Rails.application.routes.draw do
   get "/materials/:id/recommendations", to: "materials#recommendations"
 
   resources :projects, only: [:index, :create, :update, :destroy]
-  resources :materials, only: [:show]
+  resources :materials do 
+    resources :recommendations
+  end
+
 
 end

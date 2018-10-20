@@ -1,4 +1,12 @@
 <h1><%=@material.material_name%></h1>
 
-<ol id="material_recommendations>
+<ol id="material_recommendations">
 </ol>
+
+
+<%= form_for [@material, @recommendation] do |f|%>
+    <%= f.text_field :name %> <br>
+    <%= f.number_field :cost %> <br>
+    <%= f.text_field :buy %> <br>
+    <%= f.submit %>
+<%end%>
