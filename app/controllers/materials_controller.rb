@@ -3,6 +3,7 @@ class MaterialsController < ApplicationController
 
     def show 
         @material = Material.find(params[:id])
+        @recommendation = @material.recommendations.build
     end
 
     def index 
