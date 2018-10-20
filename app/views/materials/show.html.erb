@@ -5,6 +5,7 @@
 
 
 <%= form_for [@material, @recommendation] do |f|%>
+    <%= f.hidden_field :material_id%>
     <%= f.label "Product name:"%> <br>
     <%= f.text_field :name %> <br>
     <%= f.label "Cost:"%> <br>
