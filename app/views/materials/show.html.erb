@@ -5,6 +5,7 @@
 
 
 <%= form_for [@material, @recommendation] do |f|%>
+    <%= f.label "Product name:"%> <br>
     <%= f.text_field :name %> <br>
     <%= f.number_field :cost %> <br>
     <%= f.text_field :buy %> <br>
