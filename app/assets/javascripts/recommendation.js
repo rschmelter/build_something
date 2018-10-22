@@ -1,6 +1,14 @@
 
 
+$(function(){
+    debugger
+  $.ajax({
+      method: GET
+      
+  })
 
+
+})
 
 
 
@@ -13,5 +21,6 @@ class Recommendation {
     this.cost = recommendationJson.cost;
     this.buy = recommendationJson.buy;
     };
+
 
 }
