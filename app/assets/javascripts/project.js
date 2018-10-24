@@ -6,6 +6,7 @@ $(function(){
             method: "GET",
             url: this.href
         }).done(function(response){
+            
             let $userProjects = $("#user_projects")
             $userProjects.html("")
             response.forEach(function(item){

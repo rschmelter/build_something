@@ -1,14 +1,20 @@
 
 
 $(function(){
-    debugger
+    
+    let url = window.location.href
+    let getUrl = `${url}/recommendations`
   $.ajax({
-      method: GET
+      method: "GET",
+      url: getUrl
       
+  }).done(function(response){
+      debugger
   })
 
 
 })
+
 
 
 
