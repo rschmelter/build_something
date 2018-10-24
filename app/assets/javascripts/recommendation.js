@@ -9,7 +9,10 @@ $(function(){
       url: getUrl
       
   }).done(function(response){
-      debugger
+      response.forEach(function(item){
+          let recommendation = new Recommendation(item)
+          debugger
+      })
   })
 
 
