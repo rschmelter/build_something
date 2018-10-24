@@ -11,7 +11,7 @@ $(function(){
   }).done(function(response){
       response.forEach(function(item){
           let recommendation = new Recommendation(item)
-          debugger
+          $("#material_recommendations").append("<li>" + recommendation.formatRecommendation() + "</li>")
       })
   })
 
@@ -30,6 +30,10 @@ class Recommendation {
     this.cost = recommendationJson.cost;
     this.buy = recommendationJson.buy;
     };
+
+    formatRecommendation() {
+       return `Name: ${this.name} <br> Cost: $${this.cost} <br> Where to Buy: ${this.buy} <br><br>` 
+    }
 
 
 }
