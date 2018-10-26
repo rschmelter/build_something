@@ -20,10 +20,13 @@ $(function(){
 $(function(){
     $("#new_recommendation").on("submit", function(e){
        e.preventDefault();
-       debugger
+       
        $.ajax({
            method: "POST",
-           url: this.action 
+           url: this.action, 
+           data: $(this).serialize()
+       }).done(function(response){
+            debugger
        })
     })
     

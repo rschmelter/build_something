@@ -4,9 +4,10 @@ class RecommendationsController < ApplicationController
         
        @material = Material.find(params[:material_id])
         @recommendation = @material.recommendations.build(recommendations_params)
+        
             if @recommendation.save
                 
-                redirect_to @material
+                render json: @recommendation
             else
                 render "materials/show"
             end
