@@ -25,8 +25,13 @@ $(function(){
            method: "POST",
            url: this.action, 
            data: $(this).serialize()
-       }).done(function(response){
-            debugger
+       }).success(function(response){
+            let recommendation = new Recommendation(response)
+            
+            $("#material_recommendations").append("<li>" + recommendation.formatRecommendation() + "</li>")
+      
+            $('.new_recommendation')[0].reset();
+            $('.new_recommendation').find("input[type=submit]").removeAttr('disabled');
        })
     })
     
