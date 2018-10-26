@@ -13,6 +13,11 @@ class RecommendationsController < ApplicationController
         
     end
 
+    def show 
+
+
+    end
+
 
 private
 
