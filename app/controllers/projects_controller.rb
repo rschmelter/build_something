@@ -44,7 +44,7 @@ class ProjectsController < ApplicationController
   def create 
     @project = current_user.projects.new(project_params)
     if @project.save
-      redirect_to user_project_path(current_user.id, @project.id)
+      redirect_to user_path(current_user)
     else  
 
       10.times {@project.materials.build}
