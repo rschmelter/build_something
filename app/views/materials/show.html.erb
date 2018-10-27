@@ -1,6 +1,6 @@
 <h1><%=@material.material_name%></h1>
 
-
+<h3>Add Your Product Recommendation</h3>
 
 <%= form_for [@material, @recommendation] do |f|%>
     <%= f.hidden_field :material_id%>
@@ -13,6 +13,7 @@
     <%= f.submit %>
 <%end%>
 
+<h3>Product Recommendations:</h3>
 <ol id="material_recommendations">
 
 </ol>
