@@ -5,7 +5,7 @@
 
 <%if current_user.id == @user.id%>
 <p><%=link_to "Create a New Project", new_user_project_path(@user)%> </p>
-<p><%=link_to "See Your Projects", user_projects_path(@user)%></p>
+
 <p><%=link_to "Browse Users", users_path%></p>
 <p><%=link_to "Browse Materials", materials_path%></p>
 <p><%=link_to "Browse Projects", projects_path%></p>
