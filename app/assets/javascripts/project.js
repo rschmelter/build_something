@@ -15,7 +15,7 @@ $(function(){
                
                 
                 let url = `/users/${project.user_id}/projects/${project.id}`
-                $userProjects.append(`<div id=${project.id}>` + "<li>" + project.formatIntro() + "<br>" + "<a class='full_project' href=" + url + "> See Full Project </a>"  + "<br>" + "Materials Required:" + "<br>" + `<ul class=${project.id}></ul>` + "</li>" + "</div>")
+                $userProjects.append(`<div class=${project.id}_project>` + "<li>" + project.formatIntro() + "<br>" + "<a class='full_project' href=" + url + "> See Full Project </a>"  + "<br>" + "Materials Required:" + "<br>" + `<ul class=${project.id}></ul>` + "</li>" + "</div>")
 
                 materials.forEach(function(mat){
                     $(`.${project.id}`).append("<li>" + mat.material_name + "</li>")
@@ -36,7 +36,7 @@ $(function(){
             url: this.href           
         }).done(function(response){
             let project = new Project(response);
-            let $projectDiv = $(`#${project.id}`);
+            let $projectDiv = $(`.${project.id}_project`);
             
             $projectDiv.html("");
             $projectDiv.append(project.formatFullProject());
