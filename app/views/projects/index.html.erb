@@ -7,15 +7,17 @@
   <%=submit_tag "Filter"%>
 <%end%>
 
-<ul>
+
 <%@projects.each do |project|%>
-  <li><%=link_to project.name, user_project_path(project.user, project), :class => "full_project"%></li>
-  <div class="project_<%=project.id%>"
+  <div class="<%=project.id%>_project"
+  <p><%=link_to project.name, user_project_path(project.user, project), :class => "full_project"%></p>
+  
     <ul>
       <li>Type: <%=project.project_type%></li>
       <li>Cost: $<%=project.cost%></li>
       <li>Difficult: <%=project.difficulty%>/5</li>
     </ul>
+  </div>
 <%end%>
-</ul>
+
 
