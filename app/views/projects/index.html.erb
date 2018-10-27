@@ -10,6 +10,7 @@
 <ul>
 <%@projects.each do |project|%>
   <li><%=link_to project.name, user_project_path(project.user, project), :class => "full_project"%></li>
+  <div class="project_<%=project.id%>"
     <ul>
       <li>Type: <%=project.project_type%></li>
       <li>Cost: $<%=project.cost%></li>
