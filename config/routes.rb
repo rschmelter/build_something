@@ -12,11 +12,11 @@ Rails.application.routes.draw do
   resources :users do 
     resources :projects, except: [:index]
   end
-
+  get "/users/:id/manage", to: "users#manage"  
   get "/users/:id/projects", to: "users#projects"
   get "/materials", to: 'project_materials#materials'
   get "/materials/:id/recommendations", to: "materials#recommendations"
-  get "/users/:id/projects/manage", to: "users#manage"
+  
 
   resources :projects, only: [:index, :create, :update, :destroy]
   resources :materials do 

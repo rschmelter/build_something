@@ -1,0 +1,7 @@
+<%@projects.each do |project|%>
+    <p><%=project.name%></p>
+    <ul>
+        <li><%=link_to "Edit this Project", edit_user_project_path(@user, project)%></li>
+        <li><%=link_to "Delete this Project", project, method: :delete, data: {confirm: "Are you sure you want to delete this project?"}%></li>
+    </ul>
+<%end%>
