@@ -16,6 +16,10 @@ class UsersController < ApplicationController
     render json: @projects
   end
 
+  def manage 
+
+  end 
+
   def new 
     if current_user
       redirect_to user_path(current_user)
