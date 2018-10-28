@@ -62,7 +62,7 @@ class ProjectsController < ApplicationController
   def update 
     @project = Project.find(params[:id])
     if @project.update(project_params)
-      redirect_to user_project_path(current_user.id, @project.id)
+      redirect_to user_path(current_user)
     else 
       render :new
     end
