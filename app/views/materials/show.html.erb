@@ -10,10 +10,10 @@
     <%= f.number_field :cost %> <br>
     <%= f.label "Where to Buy:"%><br><br>
     <%= f.text_field :buy %> <br>
-    <%= f.submit %>
+    <%= f.submit  %>
 <%end%>
 
-<h3>Product Recommendations:</h3>
+<button id="recommendation_button" data-material="<%=@material.id%>">  Recommendations:</button>
 <ol id="material_recommendations">
 
 </ol>

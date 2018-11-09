@@ -1,7 +1,7 @@
 
 
 $(function(){
-    
+    $("#recommendation_button").on("click", function(e){
     let url = window.location.href
     let getUrl = `${url}/recommendations`
   $.ajax({
@@ -9,9 +9,15 @@ $(function(){
       url: getUrl
       
   }).done(function(response){
-      response.forEach(function(item){
+      
+      let sortedRecommendations = response.sort(function(a, b) {
+          return a.cost - b.cost;
+      })
+      
+      sortedRecommendations.forEach(function(item){
           let recommendation = new Recommendation(item)
           $("#material_recommendations").append("<li>" + recommendation.formatRecommendation() + "</li>")
+      })
       })
   })
 
